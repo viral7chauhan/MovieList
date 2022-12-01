@@ -56,13 +56,18 @@ Given the customer have connectivity
 
 ### Movie Feed
 
-| Property      | Type                |
-|---------------|---------------------|
-| `title`       | `String`            |
-| `overview`    | `String`            |
-| `popularity`  | `Double`            |
-| `releaseDate`	| `Date`              |
-| `isFavorite`	| `Bool`              |
+| Property          | Type                |
+|-------------------|---------------------|
+| `title`           | `String`            |
+| `originakTitle`   | `String`            |
+| `thumbnailImage`  | `String`            |
+| `bannerImage`     | `String`            |
+| `originakTitle`   | `String`            |
+| `overview`        | `String`            |
+| `popularity`      | `Double`            |
+| `releaseDate`	    | `Date`              |
+| `voteCount`	    | `Int`               |
+| `isFavorite`	    | `Bool`              |
 
 ### Payload contract
 
