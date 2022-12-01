@@ -15,7 +15,7 @@ final class RemoteMovieLoaderTests: XCTestCase {
         XCTAssertNil(client.requestedURL)
     }
 
-    func test_init_requestDataFromURL() {
+    func test_load_requestsDataFromURL() {
         let givenURL = URL(string: "https://another-url.com")!
         let (sut, client) = makeSUT(url: givenURL)
 
@@ -23,6 +23,7 @@ final class RemoteMovieLoaderTests: XCTestCase {
 
         XCTAssertEqual(client.requestedURL, givenURL)
     }
+
 
     // MARK: - Helper
     private func makeSUT(url: URL = URL(string: "http://another-url.com")!)
