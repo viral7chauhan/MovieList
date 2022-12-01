@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E020F67D2939056F0048C4D1 /* RemoteMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020F67C2939056F0048C4D1 /* RemoteMovieLoader.swift */; };
 		E0D14A462938814D008A5380 /* MovieListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D14A452938814D008A5380 /* MovieListApp.swift */; };
 		E0D14A482938814D008A5380 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D14A472938814D008A5380 /* ContentView.swift */; };
 		E0D14A4A2938814F008A5380 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0D14A492938814F008A5380 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E020F67C2939056F0048C4D1 /* RemoteMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMovieLoader.swift; sourceTree = "<group>"; };
 		E0D14A422938814D008A5380 /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D14A452938814D008A5380 /* MovieListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListApp.swift; sourceTree = "<group>"; };
 		E0D14A472938814D008A5380 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -56,6 +58,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E020F67B293905540048C4D1 /* Movie Feed API */ = {
+			isa = PBXGroup;
+			children = (
+				E020F67C2939056F0048C4D1 /* RemoteMovieLoader.swift */,
+			);
+			path = "Movie Feed API";
+			sourceTree = "<group>";
+		};
 		E0D14A392938814D008A5380 = {
 			isa = PBXGroup;
 			children = (
@@ -77,6 +87,7 @@
 		E0D14A442938814D008A5380 /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				E020F67B293905540048C4D1 /* Movie Feed API */,
 				E0D14A6F2938C39F008A5380 /* Movie Feature */,
 				E0D14A452938814D008A5380 /* MovieListApp.swift */,
 				E0D14A472938814D008A5380 /* ContentView.swift */,
@@ -212,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0D14A482938814D008A5380 /* ContentView.swift in Sources */,
+				E020F67D2939056F0048C4D1 /* RemoteMovieLoader.swift in Sources */,
 				E0D14A712938C3DD008A5380 /* MovieFeed.swift in Sources */,
 				E0D14A462938814D008A5380 /* MovieListApp.swift in Sources */,
 			);
