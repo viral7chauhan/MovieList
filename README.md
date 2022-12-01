@@ -59,10 +59,9 @@ Given the customer have connectivity
 | Property          | Type                |
 |-------------------|---------------------|
 | `title`           | `String`            |
-| `originakTitle`   | `String`            |
+| `originalTitle`   | `String`            |
 | `thumbnailImage`  | `String`            |
 | `bannerImage`     | `String`            |
-| `originakTitle`   | `String`            |
 | `overview`        | `String`            |
 | `popularity`      | `Double`            |
 | `releaseDate`	    | `Date`              |
