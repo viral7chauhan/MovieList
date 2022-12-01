@@ -34,27 +34,26 @@ final class RemoteMovieLoaderTests: XCTestCase {
         XCTAssertEqual(client.requestedURLs, [givenURL, givenURL])
     }
 
-    func test_load_deliversErrorOnClientError() {
+    func test_load_deliversConnectivityErrorOnClientError() {
         let (sut, client) = makeSUT()
 
-        var capturedErrors = [RemoteMovieLoader.Error]()
-        sut.load { capturedErrors.append($0) }
-
-        let clientError = NSError(domain: "test", code: 0)
-        client.completion(with: clientError)
-
-        XCTAssertEqual(capturedErrors, [.connectivity])
+        expect(sut, toCompleteWith: .failure(.connectivity), when: {
+            let clientError = NSError(domain: "Test", code: 0)
+            client.complete(with: clientError)
+        })
     }
 
     func test_load_deliversErrorOnNon200HTTPResponse() {
         let (sut, client) = makeSUT()
 
-        var capturedErrors = [RemoteMovieLoader.Error]()
-        sut.load { capturedErrors.append($0) }
+        let samples = [199, 201, 300, 400, 500]
 
-        client.completion(withStatusCode: 400)
-
-        XCTAssertEqual(capturedErrors, [.invalidData])
+        samples.enumerated().forEach { index, code in
+            expect(sut, toCompleteWith: .failure(.invalidData), when: {
+                let json = makeItemsJSON([])
+                client.complete(withStatusCode: code, data: json, at: index)
+            })
+        }
     }
 
     // MARK: - Helper
@@ -66,30 +65,34 @@ final class RemoteMovieLoaderTests: XCTestCase {
         return (sut, client)
     }
 
+    private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
+        let json = ["items": items]
+        return try! JSONSerialization.data(withJSONObject: json)
+    }
+
     private class HTTPClientSpy: HTTPClient {
-        private var messages = [(url: URL,
-                                completion: (Error?, HTTPURLResponse?) -> Void)]()
+        private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
 
         var requestedURLs: [URL] {
             messages.map(\.url)
         }
 
-        func get(from url: URL, completion: @escaping (Error?, HTTPURLResponse?) -> Void) {
+        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
             messages.append((url, completion))
         }
 
-        func completion(with error: Error, at index: Int = 0) {
-            messages[index].completion(error, nil)
+        func complete(with error: Error, at index: Int = 0) {
+            messages[index].completion(.failure(error))
         }
 
-        func completion(withStatusCode code: Int, at index: Int = 0) {
+        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
             let response = HTTPURLResponse(
                 url: requestedURLs[index],
                 statusCode: code,
                 httpVersion: nil,
-                headerFields: nil)
-            messages[index].completion(nil, response)
+                headerFields: nil)!
+            
+            messages[index].completion(.success((data, response)))
         }
-
     }
 }

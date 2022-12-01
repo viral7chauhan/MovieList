@@ -7,14 +7,28 @@
 
 import Foundation
 
-struct MovieFeed {
-    let title: String
-    let originalTitle: String
-    let thumbnailImage: String
-    let bannerImage: String
-    let overview: String
-    let popularity: Double
-    let releaseDate: Date
-    let voteCount: Int
-    var isFavorite: Bool
+public struct MovieFeed: Hashable {
+    public let id: UUID
+    public let title: String
+    public let originalTitle: String
+    public let thumbnailImage: String
+    public let bannerImage: String
+    public let overview: String
+    public let popularity: Double
+    public let releaseDate: Date
+    public let voteCount: Int
+    public var isFavorite: Bool
+
+    public init(id: UUID, title: String, originalTitle: String, thumbnailImage: String, bannerImage: String, overview: String, popularity: Double, releaseDate: Date, voteCount: Int, isFavorite: Bool) {
+        self.id = id
+        self.title = title
+        self.originalTitle = originalTitle
+        self.thumbnailImage = thumbnailImage
+        self.bannerImage = bannerImage
+        self.overview = overview
+        self.popularity = popularity
+        self.releaseDate = releaseDate
+        self.voteCount = voteCount
+        self.isFavorite = isFavorite
+    }
 }
