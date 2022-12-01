@@ -82,12 +82,29 @@ final class RemoteMovieLoaderTests: XCTestCase {
         }
     }
 
+    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let url = URL(string: "http://any-url.com")!
+        let client = HTTPClientSpy()
+        var sut: RemoteMovieLoader? = RemoteMovieLoader(url: url, client: client)
+
+        var capturedResults = [RemoteMovieLoader.Result]()
+        sut?.load { capturedResults.append($0) }
+
+        sut = nil
+        client.complete(withStatusCode: 200, data: makeItemsJSON([]))
+
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
+
     // MARK: - Helper
-    private func makeSUT(url: URL = URL(string: "http://another-url.com")!)
+    private func makeSUT(url: URL = URL(string: "http://another-url.com")!,
+                         file: StaticString = #filePath, line: UInt = #line)
     -> (sut: RemoteMovieLoader, client: HTTPClientSpy)
      {
         let client = HTTPClientSpy()
         let sut = RemoteMovieLoader(url: url, client: client)
+         trackForMemoryLeaks(client, file: file, line: line)
+         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, client)
     }
 
@@ -96,39 +113,7 @@ final class RemoteMovieLoaderTests: XCTestCase {
             "page": 1,
             "results": items
         ]
-        do {
-            return try JSONSerialization.data(withJSONObject: json)
-        } catch {
-            print(error)
-            return Data()
-        }
-
-    }
-
-    private class HTTPClientSpy: HTTPClient {
-        private var messages = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
-
-        var requestedURLs: [URL] {
-            messages.map(\.url)
-        }
-
-        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
-            messages.append((url, completion))
-        }
-
-        func complete(with error: Error, at index: Int = 0) {
-            messages[index].completion(.failure(error))
-        }
-
-        func complete(withStatusCode code: Int, data: Data, at index: Int = 0) {
-            let response = HTTPURLResponse(
-                url: requestedURLs[index],
-                statusCode: code,
-                httpVersion: nil,
-                headerFields: nil)!
-            
-            messages[index].completion(.success((data, response)))
-        }
+        return try! JSONSerialization.data(withJSONObject: json)
     }
 }
 
@@ -155,12 +140,10 @@ extension MovieFeed {
     }
 }
 
-extension Date {
-
+private extension Date {
     func stripTime() -> Date {
         let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
         let date = Calendar.current.date(from: components)
         return date!
     }
-
 }

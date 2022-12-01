@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		E008722929392CFD00D203DA /* RemoteMovieLoader+Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008722829392CFD00D203DA /* RemoteMovieLoader+Helper.swift */; };
+		E008722B2939499300D203DA /* RemoteMovieMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008722A2939499300D203DA /* RemoteMovieMapper.swift */; };
+		E008722D29394B4000D203DA /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008722C29394B4000D203DA /* HTTPClientSpy.swift */; };
+		E008722F29394B9100D203DA /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E008722E29394B9100D203DA /* XCTestCase+MemoryLeakTracking.swift */; };
 		E020F67D2939056F0048C4D1 /* RemoteMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E020F67C2939056F0048C4D1 /* RemoteMovieLoader.swift */; };
 		E0D14A462938814D008A5380 /* MovieListApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D14A452938814D008A5380 /* MovieListApp.swift */; };
 		E0D14A482938814D008A5380 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D14A472938814D008A5380 /* ContentView.swift */; };
@@ -29,6 +32,9 @@
 
 /* Begin PBXFileReference section */
 		E008722829392CFD00D203DA /* RemoteMovieLoader+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RemoteMovieLoader+Helper.swift"; sourceTree = "<group>"; };
+		E008722A2939499300D203DA /* RemoteMovieMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMovieMapper.swift; sourceTree = "<group>"; };
+		E008722C29394B4000D203DA /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
+		E008722E29394B9100D203DA /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
 		E020F67C2939056F0048C4D1 /* RemoteMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteMovieLoader.swift; sourceTree = "<group>"; };
 		E0D14A422938814D008A5380 /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0D14A452938814D008A5380 /* MovieListApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListApp.swift; sourceTree = "<group>"; };
@@ -62,6 +68,8 @@
 			isa = PBXGroup;
 			children = (
 				E008722829392CFD00D203DA /* RemoteMovieLoader+Helper.swift */,
+				E008722C29394B4000D203DA /* HTTPClientSpy.swift */,
+				E008722E29394B9100D203DA /* XCTestCase+MemoryLeakTracking.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -70,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				E020F67C2939056F0048C4D1 /* RemoteMovieLoader.swift */,
+				E008722A2939499300D203DA /* RemoteMovieMapper.swift */,
 			);
 			path = "Movie Feed API";
 			sourceTree = "<group>";
@@ -234,6 +243,7 @@
 				E020F67D2939056F0048C4D1 /* RemoteMovieLoader.swift in Sources */,
 				E0D14A712938C3DD008A5380 /* MovieFeed.swift in Sources */,
 				E0D14A462938814D008A5380 /* MovieListApp.swift in Sources */,
+				E008722B2939499300D203DA /* RemoteMovieMapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +252,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E008722929392CFD00D203DA /* RemoteMovieLoader+Helper.swift in Sources */,
+				E008722F29394B9100D203DA /* XCTestCase+MemoryLeakTracking.swift in Sources */,
+				E008722D29394B4000D203DA /* HTTPClientSpy.swift in Sources */,
 				E0D14A732938C4D0008A5380 /* RemoteMovieLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
