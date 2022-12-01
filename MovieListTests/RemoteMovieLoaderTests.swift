@@ -65,6 +65,23 @@ final class RemoteMovieLoaderTests: XCTestCase {
         }
     }
 
+    func test_load_deliversSuccessWithItemsOn200ResponseWithJsonList() {
+        let now = Date().stripTime()
+        let (sut, client) = makeSUT()
+
+        let item1 = MovieFeed(id: UUID(), title: "a movie", originalTitle: "The Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
+
+
+        let item2 = MovieFeed(id: UUID(), title: "another movie", originalTitle: "The Another Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
+
+        let items = [item1, item2]
+
+        expect(sut, toCompleteWith: .success(items)) {
+            let json = makeItemsJSON([item1.json, item2.json])
+            client.complete(withStatusCode: 200, data: json)
+        }
+    }
+
     // MARK: - Helper
     private func makeSUT(url: URL = URL(string: "http://another-url.com")!)
     -> (sut: RemoteMovieLoader, client: HTTPClientSpy)
@@ -75,8 +92,17 @@ final class RemoteMovieLoaderTests: XCTestCase {
     }
 
     private func makeItemsJSON(_ items: [[String: Any]]) -> Data {
-        let json = ["items": items]
-        return try! JSONSerialization.data(withJSONObject: json)
+        let json: [String: Any] = [
+            "page": 1,
+            "results": items
+        ]
+        do {
+            return try JSONSerialization.data(withJSONObject: json)
+        } catch {
+            print(error)
+            return Data()
+        }
+
     }
 
     private class HTTPClientSpy: HTTPClient {
@@ -104,4 +130,37 @@ final class RemoteMovieLoaderTests: XCTestCase {
             messages[index].completion(.success((data, response)))
         }
     }
+}
+
+extension MovieFeed {
+    static var formatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter
+    }()
+
+    var json: [String: Any] {
+        return [
+            "id": id.uuidString,
+            "original_title": originalTitle,
+            "overview": overview,
+            "release_date": MovieFeed.formatter.string(from: releaseDate),
+            "title": title,
+            "vote_count": voteCount,
+            "popularity": popularity,
+            "backdrop_path": thumbnailImage,
+            "poster_path": bannerImage,
+        ]
+    }
+}
+
+extension Date {
+
+    func stripTime() -> Date {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        let date = Calendar.current.date(from: components)
+        return date!
+    }
+
 }

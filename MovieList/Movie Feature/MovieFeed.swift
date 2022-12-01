@@ -19,7 +19,7 @@ public struct MovieFeed: Hashable {
     public let voteCount: Int
     public var isFavorite: Bool
 
-    public init(id: UUID, title: String, originalTitle: String, thumbnailImage: String, bannerImage: String, overview: String, popularity: Double, releaseDate: Date, voteCount: Int, isFavorite: Bool) {
+    public init(id: UUID, title: String, originalTitle: String, thumbnailImage: String, bannerImage: String, overview: String, popularity: Double, releaseDate: Date, voteCount: Int, isFavorite: Bool = false) {
         self.id = id
         self.title = title
         self.originalTitle = originalTitle
