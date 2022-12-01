@@ -41,10 +41,10 @@ public final class RemoteMovieLoader {
     }
 
    private static func map(data: Data, response: HTTPURLResponse) -> RemoteMovieLoader.Result {
-//       guard Self.isOK(response) else {
+       guard Self.isOK(response) else {
            return .failure(.invalidData)
-//       }
-//       return
+       }
+       return .success([])
    }
 
     private static func isOK(_ response: HTTPURLResponse) -> Bool {
