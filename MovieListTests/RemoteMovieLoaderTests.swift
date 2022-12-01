@@ -38,10 +38,10 @@ final class RemoteMovieLoaderTests: XCTestCase {
         let (sut, client) = makeSUT()
         client.error = NSError(domain: "test", code: 0)
 
-        var capturedError: RemoteMovieLoader.Error?
-        sut.load { capturedError = $0 }
+        var capturedErrors = [RemoteMovieLoader.Error]()
+        sut.load { capturedErrors.append($0) }
 
-        XCTAssertEqual(capturedError, .connectivity)
+        XCTAssertEqual(capturedErrors, [.connectivity])
     }
 
     // MARK: - Helper
