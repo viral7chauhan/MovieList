@@ -1,5 +1,6 @@
 
 # Movie List
+[![CI](https://github.com/viral7chauhan/MovieList/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/viral7chauhan/MovieList/actions/workflows/CI.yml)
 
 List out Movies from *the Movie db* using pagination, this app is demo project for interview
 - App using MVVM architecure
