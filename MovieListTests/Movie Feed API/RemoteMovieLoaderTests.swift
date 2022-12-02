@@ -69,10 +69,10 @@ final class RemoteMovieLoaderTests: XCTestCase {
         let now = Date().stripTime()
         let (sut, client) = makeSUT()
 
-        let item1 = MovieFeed(id: UUID(), title: "a movie", originalTitle: "The Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
+        let item1 = MovieFeed(id: 2, title: "a movie", originalTitle: "The Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
 
 
-        let item2 = MovieFeed(id: UUID(), title: "another movie", originalTitle: "The Another Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
+        let item2 = MovieFeed(id: 3, title: "another movie", originalTitle: "The Another Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
 
         let items = [item1, item2]
 
@@ -127,7 +127,7 @@ extension MovieFeed {
 
     var json: [String: Any] {
         return [
-            "id": id.uuidString,
+            "id": id,
             "original_title": originalTitle,
             "overview": overview,
             "release_date": MovieFeed.formatter.string(from: releaseDate),

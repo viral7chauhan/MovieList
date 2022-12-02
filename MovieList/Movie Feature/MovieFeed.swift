@@ -8,7 +8,7 @@
 import Foundation
 
 public struct MovieFeed: Hashable {
-    public let id: UUID
+    public let id: Int
     public let title: String
     public let originalTitle: String
     public let thumbnailImage: String
@@ -19,7 +19,7 @@ public struct MovieFeed: Hashable {
     public let voteCount: Int
     public var isFavorite: Bool
 
-    public init(id: UUID, title: String, originalTitle: String, thumbnailImage: String, bannerImage: String, overview: String, popularity: Double, releaseDate: Date, voteCount: Int, isFavorite: Bool = false) {
+    public init(id: Int, title: String, originalTitle: String, thumbnailImage: String, bannerImage: String, overview: String, popularity: Double, releaseDate: Date, voteCount: Int, isFavorite: Bool = false) {
         self.id = id
         self.title = title
         self.originalTitle = originalTitle

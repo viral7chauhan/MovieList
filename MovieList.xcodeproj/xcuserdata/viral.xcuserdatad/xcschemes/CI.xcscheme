@@ -37,6 +37,13 @@
             BlueprintName = "MovieListTests"
             ReferencedContainer = "container:MovieList.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "E008723E293A117E00D203DA"
+            BuildableName = "MovieListAPIEndToEndTests.xctest"
+            BlueprintName = "MovieListAPIEndToEndTests"
+            ReferencedContainer = "container:MovieList.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
@@ -47,6 +54,17 @@
                BlueprintIdentifier = "E0D14A512938814F008A5380"
                BuildableName = "MovieListTests.xctest"
                BlueprintName = "MovieListTests"
+               ReferencedContainer = "container:MovieList.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            testExecutionOrdering = "random">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E008723E293A117E00D203DA"
+               BuildableName = "MovieListAPIEndToEndTests.xctest"
+               BlueprintName = "MovieListAPIEndToEndTests"
                ReferencedContainer = "container:MovieList.xcodeproj">
             </BuildableReference>
          </TestableReference>

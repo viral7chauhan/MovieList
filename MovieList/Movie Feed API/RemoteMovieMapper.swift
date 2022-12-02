@@ -14,7 +14,7 @@ enum RemoteMovieMapper {
         var results: [MovieItem]
 
         struct MovieItem: Decodable {
-            let id: UUID
+            let id: Int
             let title: String
             let originalTitle: String
             let thumbnailImage: String
