@@ -10,7 +10,7 @@ import UIKit
 
 final class MovieImageViewModel {
 
-    private let prefixURLString = "http://image.tmdb.org/t/p/w92/"
+    private let imageBaseURL = "http://image.tmdb.org/t/p/w92/"
     
     private var task: MovieImageDataLoaderTask?
     private var model: MovieFeed
@@ -36,10 +36,7 @@ final class MovieImageViewModel {
     var onImageLoad: Observer<UIImage>?
 
     func loadImageData() {
-        guard let url = URL(string: prefixURLString + model.thumbnailImage) else {
-            return
-        }
-        task = imageLoader.loadImageData(from: url) { [weak self] result in
+        task = imageLoader.loadImageData(from: imageURL) { [weak self] result in
             self?.handle(result)
         }
     }
@@ -54,6 +51,13 @@ final class MovieImageViewModel {
     func cancelImageDataLoad() {
         task?.cancel()
         task = nil
+    }
+
+    private var imageURL: URL {
+        if let url = URL(string: imageBaseURL + model.thumbnailImage) {
+            return url
+        }
+        fatalError("Invalid Image url")
     }
 
 }
