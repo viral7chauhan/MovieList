@@ -21,6 +21,8 @@
 		E0CE802F294092C100CD0808 /* NetworkMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE802E294092C100CD0808 /* NetworkMovieLoader.swift */; };
 		E0CE80312940936E00CD0808 /* MovieFeedItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE80302940936E00CD0808 /* MovieFeedItemMapper.swift */; };
 		E0CE80332940999F00CD0808 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE80322940999F00CD0808 /* URLSessionHTTPClient.swift */; };
+		E0DA1AD329409DAF008367A3 /* MovieImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1AD229409DAF008367A3 /* MovieImageDataLoader.swift */; };
+		E0DA1AD529409E84008367A3 /* NetworkMovieImageDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1AD429409E84008367A3 /* NetworkMovieImageDataLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		E0CE802E294092C100CD0808 /* NetworkMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMovieLoader.swift; sourceTree = "<group>"; };
 		E0CE80302940936E00CD0808 /* MovieFeedItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedItemMapper.swift; sourceTree = "<group>"; };
 		E0CE80322940999F00CD0808 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
+		E0DA1AD229409DAF008367A3 /* MovieImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageDataLoader.swift; sourceTree = "<group>"; };
+		E0DA1AD429409E84008367A3 /* NetworkMovieImageDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMovieImageDataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 			children = (
 				E0CE801F294084F800CD0808 /* MovieFeed.swift */,
 				E0CE8021294085EA00CD0808 /* MovieLoader.swift */,
+				E0DA1AD229409DAF008367A3 /* MovieImageDataLoader.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			children = (
 				E0CE802E294092C100CD0808 /* NetworkMovieLoader.swift */,
 				E0CE80302940936E00CD0808 /* MovieFeedItemMapper.swift */,
+				E0DA1AD429409E84008367A3 /* NetworkMovieImageDataLoader.swift */,
 			);
 			path = Loader;
 			sourceTree = "<group>";
@@ -256,10 +262,12 @@
 				E0CE7FF32940801C00CD0808 /* ViewController.swift in Sources */,
 				E0CE802F294092C100CD0808 /* NetworkMovieLoader.swift in Sources */,
 				E0CE802C2940927C00CD0808 /* HTTPClient.swift in Sources */,
+				E0DA1AD329409DAF008367A3 /* MovieImageDataLoader.swift in Sources */,
 				E0CE7FEF2940801C00CD0808 /* AppDelegate.swift in Sources */,
 				E0CE8020294084F800CD0808 /* MovieFeed.swift in Sources */,
 				E0CE7FF12940801C00CD0808 /* SceneDelegate.swift in Sources */,
 				E0CE80332940999F00CD0808 /* URLSessionHTTPClient.swift in Sources */,
+				E0DA1AD529409E84008367A3 /* NetworkMovieImageDataLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
