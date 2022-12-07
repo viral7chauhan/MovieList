@@ -14,6 +14,7 @@
 		E0CE7FF82940801C00CD0808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0CE7FF72940801C00CD0808 /* Assets.xcassets */; };
 		E0CE7FFB2940801C00CD0808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0CE7FF92940801C00CD0808 /* LaunchScreen.storyboard */; };
 		E0CE80062940801D00CD0808 /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE80052940801D00CD0808 /* MovieListTests.swift */; };
+		E0CE8020294084F800CD0808 /* MovieFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE801F294084F800CD0808 /* MovieFeed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		E0CE7FFC2940801C00CD0808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0CE80012940801D00CD0808 /* MovieListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0CE80052940801D00CD0808 /* MovieListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTests.swift; sourceTree = "<group>"; };
+		E0CE801F294084F800CD0808 /* MovieFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieFeed.swift; path = ../../../../../Desktop/MovieFeed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		E0CE7FED2940801C00CD0808 /* MovieList */ = {
 			isa = PBXGroup;
 			children = (
+				E0CE801E294084DF00CD0808 /* Model */,
 				E0CE7FEE2940801C00CD0808 /* AppDelegate.swift */,
 				E0CE7FF02940801C00CD0808 /* SceneDelegate.swift */,
 				E0CE7FF22940801C00CD0808 /* ViewController.swift */,
@@ -95,6 +98,14 @@
 				E0CE80052940801D00CD0808 /* MovieListTests.swift */,
 			);
 			path = MovieListTests;
+			sourceTree = "<group>";
+		};
+		E0CE801E294084DF00CD0808 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E0CE801F294084F800CD0808 /* MovieFeed.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +211,7 @@
 			files = (
 				E0CE7FF32940801C00CD0808 /* ViewController.swift in Sources */,
 				E0CE7FEF2940801C00CD0808 /* AppDelegate.swift in Sources */,
+				E0CE8020294084F800CD0808 /* MovieFeed.swift in Sources */,
 				E0CE7FF12940801C00CD0808 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
