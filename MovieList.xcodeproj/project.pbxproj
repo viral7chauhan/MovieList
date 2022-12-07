@@ -13,9 +13,10 @@
 		E0CE7FF62940801C00CD0808 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0CE7FF42940801C00CD0808 /* Main.storyboard */; };
 		E0CE7FF82940801C00CD0808 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0CE7FF72940801C00CD0808 /* Assets.xcassets */; };
 		E0CE7FFB2940801C00CD0808 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E0CE7FF92940801C00CD0808 /* LaunchScreen.storyboard */; };
-		E0CE80062940801D00CD0808 /* MovieListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE80052940801D00CD0808 /* MovieListTests.swift */; };
 		E0CE8020294084F800CD0808 /* MovieFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE801F294084F800CD0808 /* MovieFeed.swift */; };
 		E0CE8022294085EA00CD0808 /* MovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE8021294085EA00CD0808 /* MovieLoader.swift */; };
+		E0CE8024294086C100CD0808 /* NetworkMovieLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE8023294086C100CD0808 /* NetworkMovieLoaderTests.swift */; };
+		E0CE80272940881D00CD0808 /* XCTestCase+MemoryTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE80262940881D00CD0808 /* XCTestCase+MemoryTracking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,9 +39,10 @@
 		E0CE7FFA2940801C00CD0808 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E0CE7FFC2940801C00CD0808 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E0CE80012940801D00CD0808 /* MovieListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0CE80052940801D00CD0808 /* MovieListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTests.swift; sourceTree = "<group>"; };
 		E0CE801F294084F800CD0808 /* MovieFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieFeed.swift; path = ../../../../../Desktop/MovieFeed.swift; sourceTree = "<group>"; };
 		E0CE8021294085EA00CD0808 /* MovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MovieLoader.swift; path = ../../../../../Desktop/MovieLoader.swift; sourceTree = "<group>"; };
+		E0CE8023294086C100CD0808 /* NetworkMovieLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMovieLoaderTests.swift; sourceTree = "<group>"; };
+		E0CE80262940881D00CD0808 /* XCTestCase+MemoryTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryTracking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +99,8 @@
 		E0CE80042940801D00CD0808 /* MovieListTests */ = {
 			isa = PBXGroup;
 			children = (
-				E0CE80052940801D00CD0808 /* MovieListTests.swift */,
+				E0CE80252940880700CD0808 /* Helpers */,
+				E0CE8023294086C100CD0808 /* NetworkMovieLoaderTests.swift */,
 			);
 			path = MovieListTests;
 			sourceTree = "<group>";
@@ -109,6 +112,14 @@
 				E0CE8021294085EA00CD0808 /* MovieLoader.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E0CE80252940880700CD0808 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E0CE80262940881D00CD0808 /* XCTestCase+MemoryTracking.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +235,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0CE80062940801D00CD0808 /* MovieListTests.swift in Sources */,
+				E0CE80272940881D00CD0808 /* XCTestCase+MemoryTracking.swift in Sources */,
+				E0CE8024294086C100CD0808 /* NetworkMovieLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
