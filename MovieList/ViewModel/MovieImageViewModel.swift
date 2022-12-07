@@ -10,6 +10,8 @@ import UIKit
 
 final class MovieImageViewModel {
 
+    private let prefixURLString = "http://image.tmdb.org/t/p/w92/"
+    
     private var task: MovieImageDataLoaderTask?
     private var model: MovieFeed
     private let imageLoader: MovieImageDataLoader
@@ -27,7 +29,7 @@ final class MovieImageViewModel {
     var onImageLoad: Observer<UIImage>?
 
     func loadImageData() {
-        guard let url = URL(string: model.thumbnailImage) else {
+        guard let url = URL(string: prefixURLString + model.thumbnailImage) else {
             return
         }
         task = imageLoader.loadImageData(from: url) { [weak self] result in
