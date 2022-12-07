@@ -26,6 +26,7 @@
 		E0DA1ADB2940A5CA008367A3 /* MovieListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1ADA2940A5CA008367A3 /* MovieListCell.swift */; };
 		E0DA1ADE2940A707008367A3 /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1ADD2940A707008367A3 /* MovieListViewModel.swift */; };
 		E0DA1AE02940A812008367A3 /* MovieImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1ADF2940A812008367A3 /* MovieImageViewModel.swift */; };
+		E0DA1AE22940AB73008367A3 /* MovieImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1AE12940AB73008367A3 /* MovieImageCellController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		E0DA1ADA2940A5CA008367A3 /* MovieListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCell.swift; sourceTree = "<group>"; };
 		E0DA1ADD2940A707008367A3 /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		E0DA1ADF2940A812008367A3 /* MovieImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageViewModel.swift; sourceTree = "<group>"; };
+		E0DA1AE12940AB73008367A3 /* MovieImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageCellController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			children = (
 				E0DA1AD92940A5AA008367A3 /* Views */,
 				E0DA1AD72940A48F008367A3 /* MovieListViewController.swift */,
+				E0DA1AE12940AB73008367A3 /* MovieImageCellController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				E0DA1AE02940A812008367A3 /* MovieImageViewModel.swift in Sources */,
 				E0CE7FEF2940801C00CD0808 /* AppDelegate.swift in Sources */,
 				E0CE8020294084F800CD0808 /* MovieFeed.swift in Sources */,
+				E0DA1AE22940AB73008367A3 /* MovieImageCellController.swift in Sources */,
 				E0DA1AD82940A48F008367A3 /* MovieListViewController.swift in Sources */,
 				E0CE7FF12940801C00CD0808 /* SceneDelegate.swift in Sources */,
 				E0CE80332940999F00CD0808 /* URLSessionHTTPClient.swift in Sources */,
