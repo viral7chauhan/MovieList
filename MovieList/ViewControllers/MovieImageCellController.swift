@@ -34,6 +34,7 @@ final class MovieImageCellController {
         cell.titleLabel.text = viewModel.title
         cell.releaseDateLabel.text = viewModel.releaseDate
         cell.overviewLabel.text = viewModel.overview
+        cell.posterImgView.image = nil
 
         viewModel.onImageLoad = { [weak cell] image in
             DispatchQueue.main.async {

@@ -34,7 +34,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 loader: movieLoader,
                 imageLoader: movieImageLoader)) 
     }
-
-
 }
 
