@@ -20,6 +20,7 @@
 		E0CE802C2940927C00CD0808 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE802B2940927C00CD0808 /* HTTPClient.swift */; };
 		E0CE802F294092C100CD0808 /* NetworkMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE802E294092C100CD0808 /* NetworkMovieLoader.swift */; };
 		E0CE80312940936E00CD0808 /* MovieFeedItemMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE80302940936E00CD0808 /* MovieFeedItemMapper.swift */; };
+		E0CE80332940999F00CD0808 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE80322940999F00CD0808 /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E0CE802B2940927C00CD0808 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		E0CE802E294092C100CD0808 /* NetworkMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMovieLoader.swift; sourceTree = "<group>"; };
 		E0CE80302940936E00CD0808 /* MovieFeedItemMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFeedItemMapper.swift; sourceTree = "<group>"; };
+		E0CE80322940999F00CD0808 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				E0CE802B2940927C00CD0808 /* HTTPClient.swift */,
+				E0CE80322940999F00CD0808 /* URLSessionHTTPClient.swift */,
 			);
 			path = NetworkAPI;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				E0CE7FEF2940801C00CD0808 /* AppDelegate.swift in Sources */,
 				E0CE8020294084F800CD0808 /* MovieFeed.swift in Sources */,
 				E0CE7FF12940801C00CD0808 /* SceneDelegate.swift in Sources */,
+				E0CE80332940999F00CD0808 /* URLSessionHTTPClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
