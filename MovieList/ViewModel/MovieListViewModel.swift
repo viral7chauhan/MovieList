@@ -17,6 +17,10 @@ final class MovieListViewModel {
         self.loader = loader
     }
 
+    var title: String {
+        return "Movies"
+    }
+
     var onMovieLoaded: Observer<[MovieFeed]>?
 
     func loadMovies() {

@@ -17,15 +17,18 @@ class MovieListViewController: UITableViewController, UITableViewDataSourcePrefe
         }
     }
 
-    var viewModel: MovieListViewModel?
+    var viewModel: MovieListViewModel? {
+        didSet {
+            title = viewModel?.title
+            viewModel?.loadMovies()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.prefetchDataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 230
-        title = "Movies"
-        viewModel?.loadMovies()
     }
 
     // MARK: - Table view data source

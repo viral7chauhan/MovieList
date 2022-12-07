@@ -23,7 +23,7 @@ final class MovieImageCellController {
     }
 
     func preLoad() {
-        viewModel.loadImageData()
+//        viewModel.loadImageData()
     }
 
     func cancelLoad() {
