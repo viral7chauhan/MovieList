@@ -18,6 +18,7 @@ final class MovieImageCellController {
 
     func view(in tableView: UITableView) -> UITableViewCell {
         cell = tableView.dequeueReusableCell()
+        viewModel.loadImageData()
         return binded(cell!)
     }
 

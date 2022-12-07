@@ -18,7 +18,7 @@ final class MovieUIComposer {
         let movieViewModel = MovieListViewModel(loader: loader)
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let movieController = storyboard.instantiateViewController(withIdentifier: "MovieListVC") as! MovieListViewController
+        let movieController = storyboard.instantiateInitialViewController() as! MovieListViewController
         movieController.viewModel = movieViewModel
         movieViewModel.onMovieLoaded = adaptFeedToCellController(forwardingTo: movieController, loader: imageLoader)
 

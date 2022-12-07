@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieListViewController: UITableViewController {
+class MovieListViewController: UITableViewController, UITableViewDataSourcePrefetching {
 
     var tableModel = [MovieImageCellController]() {
         didSet {
@@ -21,7 +21,10 @@ class MovieListViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.title = "Movies"
+        tableView.prefetchDataSource = self
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 230
+        title = "Movies"
         viewModel?.loadMovies()
     }
 
@@ -43,6 +46,10 @@ class MovieListViewController: UITableViewController {
         indexPaths.forEach { indexPath in
             cellController(forRowAt: indexPath).preLoad()
         }
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 230
     }
 
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
