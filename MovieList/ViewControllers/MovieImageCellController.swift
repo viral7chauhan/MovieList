@@ -35,9 +35,10 @@ final class MovieImageCellController {
         cell.overviewLabel.text = viewModel.overview
 
         viewModel.onImageLoad = { [weak cell] image in
-            cell?.posterImgView.image = image
+            DispatchQueue.main.async {
+                cell?.posterImgView.image = image
+            }
         }
-
         return cell
     }
 }

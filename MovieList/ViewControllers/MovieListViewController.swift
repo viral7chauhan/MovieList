@@ -11,13 +11,18 @@ class MovieListViewController: UITableViewController {
 
     var tableModel = [MovieImageCellController]() {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
+
+    var viewModel: MovieListViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.title = "Movies"
+        viewModel?.loadMovies()
     }
 
     // MARK: - Table view data source
