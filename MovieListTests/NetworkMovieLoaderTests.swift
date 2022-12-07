@@ -11,6 +11,12 @@ import MovieList
 
 class HTTPClientSpy {
     var requestedURLs = [URL]()
+
+    typealias Result = Swift.Result<(Data, HTTPURLResponse), Error>
+
+    func get(from url: URL, _ completion: @escaping (Result) -> Void) {
+        requestedURLs.append(url)
+    }
 }
 
 class NetworkMoveiLoader {
@@ -22,6 +28,9 @@ class NetworkMoveiLoader {
         self.client = client
     }
 
+    func load() {
+        client.get(from: url) { _ in }
+    }
 }
 
 final class NetworkMovieLoaderTests: XCTestCase {
@@ -30,6 +39,13 @@ final class NetworkMovieLoaderTests: XCTestCase {
         let (_, client) = makeSUT()
 
         XCTAssertTrue(client.requestedURLs.isEmpty)
+    }
+
+    func test_load_requestsDataFromURL() {
+        let url = URL(string: "https://a-another-url.com")!
+        let (sut, client) = makeSUT(url: url)
+        sut.load()
+        XCTAssertEqual(client.requestedURLs, [url])
     }
 
     //MARK: - Helpers
