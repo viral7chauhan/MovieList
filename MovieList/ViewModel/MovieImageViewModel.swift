@@ -22,9 +22,16 @@ final class MovieImageViewModel {
         self.imageLoader = imageLoader
     }
 
+    var dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter
+    }()
+
     var title: String { model.title }
     var overview: String { model.overview }
-    var releaseDate: String { "\(model.releaseDate)" }
+    var releaseDate: String { dateFormatter.string(from: model.releaseDate) }
 
     var onImageLoad: Observer<UIImage>?
 
