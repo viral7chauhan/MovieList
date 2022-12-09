@@ -64,6 +64,37 @@ final class NetworkMovieLoaderTests: XCTestCase {
         }
     }
 
+    func test_load_deliversSuccessWithItemsOn200ResponseWithJsonList() {
+        let now = Date().stripTime()
+        let (sut, client) = makeSUT()
+
+        let item1 = MovieFeed(id: 2, title: "a movie", originalTitle: "The Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
+
+
+        let item2 = MovieFeed(id: 3, title: "another movie", originalTitle: "The Another Movie", thumbnailImage: "xyz", bannerImage: "xyz", overview: "good", popularity: 25.6, releaseDate: now, voteCount: 5, isFavorite: false)
+
+        let items = [item1, item2]
+
+        expect(sut, toCompleteWith: .success(items)) {
+            let json = makeItemsJSON([item1.json, item2.json])
+            client.complete(withStatus: 200, data: json)
+        }
+    }
+
+    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let url = URL(string: "http://any-url.com")!
+        let client = HTTPClientSpy()
+        var sut: NetworkMovieLoader? = NetworkMovieLoader(url: url, client: client)
+
+        var capturedResults = [NetworkMovieLoader.Result]()
+        sut?.load { capturedResults.append($0) }
+
+        sut = nil
+        client.complete(withStatus: 200, data: makeItemsJSON([]))
+
+        XCTAssertTrue(capturedResults.isEmpty)
+    }
+
     //MARK: - Helpers
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!,
                          file: StaticString = #filePath, line: UInt = #line)
@@ -114,14 +145,24 @@ final class NetworkMovieLoaderTests: XCTestCase {
 
     private class HTTPClientSpy: HTTPClient {
 
+        private struct Task: HTTPClientTask {
+            let callback: () -> Void
+            func cancel() { callback () }
+        }
+
         private var message = [(url: URL, completion: (HTTPClient.Result) -> Void)]()
+        private(set) var cancelledURLs = [URL]()
 
         var requestedURLs: [URL] {
             message.map { $0.url }
         }
 
-        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) {
+        @discardableResult
+        func get(from url: URL, completion: @escaping (HTTPClient.Result) -> Void) -> HTTPClientTask {
             message.append((url, completion))
+            return Task { [weak self] in
+                self?.cancelledURLs.append(url)
+            }
         }
 
         func complete(with error: Error, at index: Int = 0) {
@@ -140,4 +181,36 @@ final class NetworkMovieLoaderTests: XCTestCase {
         }
     }
 
+}
+
+
+extension MovieFeed {
+    static var formatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter
+    }()
+
+    var json: [String: Any] {
+        return [
+            "id": id,
+            "original_title": originalTitle,
+            "overview": overview,
+            "release_date": MovieFeed.formatter.string(from: releaseDate),
+            "title": title,
+            "vote_count": voteCount,
+            "popularity": popularity,
+            "backdrop_path": thumbnailImage,
+            "poster_path": bannerImage,
+        ]
+    }
+}
+
+private extension Date {
+    func stripTime() -> Date {
+        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
+        let date = Calendar.current.date(from: components)
+        return date!
+    }
 }
