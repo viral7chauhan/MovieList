@@ -17,22 +17,28 @@ final class MovieUIComposer {
 
         let movieViewModel = MovieListViewModel(loader: loader)
 
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let movieController = storyboard.instantiateInitialViewController() as! MovieListViewController
-        movieController.viewModel = movieViewModel
+        let movieController = makeMovieListController(with: movieViewModel)
+
         movieViewModel.onMovieLoaded = adaptFeedToCellController(forwardingTo: movieController, loader: imageLoader)
 
         return movieController
     }
 
     private static func adaptFeedToCellController(forwardingTo controller: MovieListViewController,
-                                          loader: MovieImageDataLoader) -> ([MovieFeed]) -> Void {
+                                                  loader: MovieImageDataLoader) -> ([MovieFeed]) -> Void {
         return { [weak controller] feed in
             controller?.tableModel = feed.map { model in
-                MovieImageCellController(viewModel: MovieImageViewModel(model: model,
-                                                                      imageLoader: loader))
+                MovieImageCellController(
+                    viewModel: MovieImageViewModel(model: model,imageLoader: loader))
             }
         }
+    }
+
+    private static func makeMovieListController(with viewModel: MovieListViewModel) -> MovieListViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let movieController = storyboard.instantiateInitialViewController() as! MovieListViewController
+        movieController.viewModel = viewModel
+        return movieController
     }
 
 }
