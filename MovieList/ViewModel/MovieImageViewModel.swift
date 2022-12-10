@@ -10,7 +10,19 @@ import UIKit
 
 final class MovieImageViewModel {
 
-    private let imageBaseURL = "http://image.tmdb.org/t/p/w92/"
+    enum ImageResolution {
+        case low
+        case high
+
+        var url: String {
+            var baseURL = "http://image.tmdb.org/t/p"
+            switch self {
+                case .low: baseURL += "/w92/"
+                case .high: baseURL += "/w500/"
+            }
+            return baseURL
+        }
+    }
     
     private var task: MovieImageDataLoaderTask?
     private var model: MovieFeed
@@ -35,8 +47,8 @@ final class MovieImageViewModel {
 
     var onImageLoad: Observer<UIImage>?
 
-    func loadImageData() {
-        task = imageLoader.loadImageData(from: imageURL) { [weak self] result in
+    func loadImageData(with resolution: ImageResolution = .low) {
+        task = imageLoader.loadImageData(from: imageURL(for: resolution)) { [weak self] result in
             self?.handle(result)
         }
     }
@@ -53,11 +65,10 @@ final class MovieImageViewModel {
         task = nil
     }
 
-    private var imageURL: URL {
-        if let url = URL(string: imageBaseURL + model.thumbnailImage) {
+    private func imageURL(for resolution: ImageResolution) -> URL {
+        if let url = URL(string: resolution.url + model.thumbnailImage) {
             return url
         }
         fatalError("Invalid Image url")
     }
-
 }

@@ -12,10 +12,11 @@ final class MovieUIComposer {
 
     private init() {}
 
-    static func movieComposeWith(loader: MovieLoader, imageLoader: MovieImageDataLoader)
+    static func movieComposeWith(loader: MovieLoader, imageLoader: MovieImageDataLoader, flow: MovieCoordinator)
     -> MovieListViewController {
 
         let movieViewModel = MovieListViewModel(loader: loader)
+        movieViewModel.flowCoordinator = flow
 
         let movieController = makeMovieListController(with: movieViewModel)
 
@@ -41,4 +42,10 @@ final class MovieUIComposer {
         return movieController
     }
 
+    static func makeMovieDetailsController(with viewModel: MovieImageViewModel) -> MovieDetailsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let movieDetailsController = storyboard.instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+        movieDetailsController.viewModel = viewModel
+        return movieDetailsController
+    }
 }

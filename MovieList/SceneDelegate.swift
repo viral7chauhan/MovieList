@@ -9,6 +9,8 @@ import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
+    var movieCoordinator: MovieCoordinator?
+
     var window: UIWindow?
     lazy var urlSessionClient: HTTPClient = {
         let client = URLSessionHTTPClient(session: .shared)
@@ -28,11 +30,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let movieLoader = NetworkMovieLoader(url: url, client: urlSessionClient)
         let movieImageLoader = NetworkMovieImageDataLoader(client: urlSessionClient)
 
+        let navigation = UINavigationController()
+        movieCoordinator = MovieCoordinator(navigationController: navigation)
 
-        window?.rootViewController = UINavigationController(
-            rootViewController: MovieUIComposer.movieComposeWith(
-                loader: movieLoader,
-                imageLoader: movieImageLoader)) 
+        let movieListController = MovieUIComposer.movieComposeWith(
+            loader: movieLoader,
+            imageLoader: movieImageLoader,
+            flow: movieCoordinator!)
+
+
+        movieCoordinator?.setFirstController(movieListController)
+
+        window?.rootViewController = navigation
     }
 }
 

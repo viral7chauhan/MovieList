@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieListViewController: UITableViewController, UITableViewDataSourcePrefetching {
+class MovieListViewController: UITableViewController {
 
     var tableModel = [MovieImageCellController]() {
         didSet {
@@ -39,7 +39,6 @@ class MovieListViewController: UITableViewController, UITableViewDataSourcePrefe
     private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
         cellController(forRowAt: indexPath).cancelLoad()
     }
-
 }
 
 // MARK: - Table view data source
@@ -55,6 +54,10 @@ extension MovieListViewController {
 
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cancelCellControllerLoad(forRowAt: indexPath)
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel?.didSelectItem(at: indexPath.row)
     }
 }
 

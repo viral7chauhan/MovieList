@@ -73,7 +73,6 @@
                                     <outlet property="posterImgView" destination="bQA-vD-7WZ" id="tGu-vj-ZVN"/>
                                     <outlet property="releaseDateLabel" destination="IiH-Py-gvz" id="71v-fk-uv0"/>
                                     <outlet property="titleLabel" destination="F7C-as-Rq0" id="vbQ-or-Web"/>
-                                    <segue destination="w6L-Uk-5MM" kind="show" id="Hbd-i1-WdH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -91,9 +90,9 @@
         <!--Movie Details View Controller-->
         <scene sceneID="Zf4-Dh-cxY">
             <objects>
-                <viewController id="w6L-Uk-5MM" customClass="MovieDetailsViewController" customModule="MovieList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MovieDetailsViewController" id="w6L-Uk-5MM" customClass="MovieDetailsViewController" customModule="MovieList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IhR-fK-qFU">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O0k-CU-lei">
@@ -130,6 +129,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="MYs-In-nRN"/>
+                    <connections>
+                        <outlet property="overviewLabel" destination="9Oi-qn-qGh" id="JKt-zd-fMB"/>
+                        <outlet property="posterImageView" destination="O0k-CU-lei" id="qOC-JS-Gd1"/>
+                        <outlet property="titleLabel" destination="t6h-Hm-3D7" id="ePa-NK-gAJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZZ-Zb-kKA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
