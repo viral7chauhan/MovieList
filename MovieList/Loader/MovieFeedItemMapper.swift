@@ -54,18 +54,11 @@ enum MovieFeedItemMapper {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
 
-        guard response.statusCode == isOK else {
+        guard response.statusCode == isOK,
+              let root = try? decoder.decode(Root.self, from: data) else {
             return .failure(NetworkMovieLoader.Error.invalidData)
         }
 
-        do {
-            let root = try decoder.decode(Root.self, from: data)
-            return .success(root.movieFeeds)
-        } catch {
-            print(error.localizedDescription)
-            return .failure(NetworkMovieLoader.Error.invalidData)
-        }
-
-
+        return .success(root.movieFeeds)
     }
 }

@@ -46,7 +46,7 @@ final class MovieListViewModel {
     }
 
     private var movieURL: URL {
-        return URL(string: "http://api.themoviedb.org/3/search/movie?api_key=7e588fae3312be4835d4fcf73918a95f&query=a%20&page=\(page)")!
+        URL(string: "http://api.themoviedb.org/3/search/movie?api_key=7e588fae3312be4835d4fcf73918a95f&query=a%20&page=\(page)")!
     }
 }
 
