@@ -31,8 +31,20 @@ class MovieListViewController: UITableViewController, UITableViewDataSourcePrefe
         tableView.estimatedRowHeight = 230
     }
 
-    // MARK: - Table view data source
+    private func cellController(
+        forRowAt indexPath: IndexPath) -> MovieImageCellController {
+        return tableModel[indexPath.row]
+    }
 
+    private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
+        cellController(forRowAt: indexPath).cancelLoad()
+    }
+
+}
+
+// MARK: - Table view data source
+
+extension MovieListViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableModel.count
     }
@@ -44,6 +56,9 @@ class MovieListViewController: UITableViewController, UITableViewDataSourcePrefe
     public override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cancelCellControllerLoad(forRowAt: indexPath)
     }
+}
+
+extension MovieListViewController: UITableViewDataSourcePrefetching {
 
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
@@ -54,13 +69,4 @@ class MovieListViewController: UITableViewController, UITableViewDataSourcePrefe
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach(cancelCellControllerLoad)
     }
-
-    private func cellController(forRowAt indexPath: IndexPath) -> MovieImageCellController {
-        return tableModel[indexPath.row]
-    }
-
-    private func cancelCellControllerLoad(forRowAt indexPath: IndexPath) {
-        cellController(forRowAt: indexPath).cancelLoad()
-    }
-
 }
