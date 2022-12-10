@@ -9,7 +9,7 @@ import UIKit
 
 final class MovieImageCellController {
 
-    private let viewModel: MovieImageViewModel
+    let viewModel: MovieImageViewModel
     var cell: MovieListCell?
 
     init(viewModel: MovieImageViewModel) {
@@ -42,6 +42,9 @@ final class MovieImageCellController {
                 cell?.posterImgView.image = image
             }
         }
+
+        cell.addToWatchListButton.setImage(viewModel.isWatchListItem, for: .normal)
+
         return cell
     }
 }

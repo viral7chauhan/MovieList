@@ -52,16 +52,33 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hyH-FZ-3VB">
+                                            <rect key="frame" x="341" y="181" width="52" height="50"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="KE9-8Z-WfH"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Wry-Ya-XJj"/>
+                                                <constraint firstAttribute="height" constant="50" id="ddW-U5-xuf"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                            <connections>
+                                                <action selector="onWatchItemClicked:" destination="w6L-Uk-5MM" eventType="touchUpInside" id="h14-5L-obV"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="F7C-as-Rq0" firstAttribute="leading" secondItem="aj3-Oe-sgs" secondAttribute="leadingMargin" id="0a5-01-4dm"/>
+                                        <constraint firstItem="hyH-FZ-3VB" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bQA-vD-7WZ" secondAttribute="trailing" constant="8" symbolic="YES" id="8Xc-FA-tYe"/>
                                         <constraint firstItem="IiH-Py-gvz" firstAttribute="trailing" secondItem="aj3-Oe-sgs" secondAttribute="trailingMargin" id="B4F-E0-MPl"/>
                                         <constraint firstAttribute="bottom" secondItem="bQA-vD-7WZ" secondAttribute="bottom" priority="999" constant="4" id="BWR-o8-f6g"/>
                                         <constraint firstItem="myP-MN-8fN" firstAttribute="top" secondItem="bQA-vD-7WZ" secondAttribute="top" id="LKN-uf-tGb"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="myP-MN-8fN" secondAttribute="bottom" constant="8" id="MqI-NW-sAc"/>
                                         <constraint firstItem="F7C-as-Rq0" firstAttribute="top" secondItem="aj3-Oe-sgs" secondAttribute="topMargin" id="Rui-Rn-KSf"/>
                                         <constraint firstItem="myP-MN-8fN" firstAttribute="leading" secondItem="bQA-vD-7WZ" secondAttribute="trailing" constant="8" id="SIl-d3-88G"/>
+                                        <constraint firstItem="IiH-Py-gvz" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aj3-Oe-sgs" secondAttribute="leading" constant="20" symbolic="YES" id="VLF-au-TXI"/>
                                         <constraint firstItem="F7C-as-Rq0" firstAttribute="trailing" secondItem="aj3-Oe-sgs" secondAttribute="trailingMargin" id="XHy-9T-w5j"/>
+                                        <constraint firstAttribute="bottom" secondItem="hyH-FZ-3VB" secondAttribute="bottom" id="gtV-wT-Enw"/>
+                                        <constraint firstAttribute="trailing" secondItem="hyH-FZ-3VB" secondAttribute="trailing" id="hGA-cy-G7P"/>
                                         <constraint firstItem="bQA-vD-7WZ" firstAttribute="top" secondItem="F7C-as-Rq0" secondAttribute="bottom" constant="32" id="mVy-61-egF"/>
                                         <constraint firstItem="myP-MN-8fN" firstAttribute="trailing" secondItem="aj3-Oe-sgs" secondAttribute="trailingMargin" id="mcA-Zd-ThE"/>
                                         <constraint firstItem="IiH-Py-gvz" firstAttribute="top" secondItem="F7C-as-Rq0" secondAttribute="bottom" constant="4" id="od2-kX-cqe"/>
@@ -69,6 +86,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="addToWatchListButton" destination="hyH-FZ-3VB" id="3Nm-U2-xlI"/>
                                     <outlet property="overviewLabel" destination="myP-MN-8fN" id="S3W-Vb-wLI"/>
                                     <outlet property="posterImgView" destination="bQA-vD-7WZ" id="tGu-vj-ZVN"/>
                                     <outlet property="releaseDateLabel" destination="IiH-Py-gvz" id="71v-fk-uv0"/>
@@ -113,6 +131,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtM-M1-pu5">
+                                <rect key="frame" x="333" y="67" width="52" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="Aaw-2l-lGz"/>
+                                    <constraint firstAttribute="height" constant="50" id="biQ-a4-LdV"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                <connections>
+                                    <action selector="onWatchItemClicked:" destination="w6L-Uk-5MM" eventType="touchUpInside" id="Qrm-xY-pM9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="C8b-mF-sED"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -120,9 +150,12 @@
                             <constraint firstItem="9Oi-qn-qGh" firstAttribute="leading" secondItem="t6h-Hm-3D7" secondAttribute="leading" id="AuU-HH-82Y"/>
                             <constraint firstItem="C8b-mF-sED" firstAttribute="trailing" secondItem="O0k-CU-lei" secondAttribute="trailing" constant="8" id="HtX-Fz-P2W"/>
                             <constraint firstItem="9Oi-qn-qGh" firstAttribute="trailing" secondItem="t6h-Hm-3D7" secondAttribute="trailing" id="Oy9-NA-Sju"/>
+                            <constraint firstItem="C8b-mF-sED" firstAttribute="trailing" secondItem="qtM-M1-pu5" secondAttribute="trailing" constant="8" id="UbT-T1-hqU"/>
                             <constraint firstItem="t6h-Hm-3D7" firstAttribute="leading" secondItem="O0k-CU-lei" secondAttribute="leading" id="Ynl-y9-cmJ"/>
+                            <constraint firstItem="qtM-M1-pu5" firstAttribute="top" secondItem="C8b-mF-sED" secondAttribute="top" constant="8" id="Zum-oM-hRs"/>
                             <constraint firstItem="t6h-Hm-3D7" firstAttribute="top" secondItem="O0k-CU-lei" secondAttribute="bottom" constant="16" id="c25-5V-UXj"/>
                             <constraint firstItem="9Oi-qn-qGh" firstAttribute="top" secondItem="t6h-Hm-3D7" secondAttribute="bottom" constant="16" id="goV-YI-wyb"/>
+                            <constraint firstItem="qtM-M1-pu5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="C8b-mF-sED" secondAttribute="leading" symbolic="YES" id="haN-6Z-pUS"/>
                             <constraint firstItem="t6h-Hm-3D7" firstAttribute="trailing" secondItem="O0k-CU-lei" secondAttribute="trailing" id="i5Y-wd-W5Z"/>
                             <constraint firstItem="O0k-CU-lei" firstAttribute="leading" secondItem="C8b-mF-sED" secondAttribute="leading" constant="8" id="u7F-wq-CQN"/>
                             <constraint firstItem="O0k-CU-lei" firstAttribute="top" secondItem="C8b-mF-sED" secondAttribute="top" constant="8" id="zV6-Xx-svZ"/>
@@ -133,6 +166,7 @@
                         <outlet property="overviewLabel" destination="9Oi-qn-qGh" id="JKt-zd-fMB"/>
                         <outlet property="posterImageView" destination="O0k-CU-lei" id="qOC-JS-Gd1"/>
                         <outlet property="titleLabel" destination="t6h-Hm-3D7" id="ePa-NK-gAJ"/>
+                        <outlet property="watchItemButton" destination="qtM-M1-pu5" id="S3k-Lk-jNP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PZZ-Zb-kKA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -142,6 +176,7 @@
     </scenes>
     <resources>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

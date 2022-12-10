@@ -38,11 +38,10 @@ class MovieCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: false)
     }
 
-    func showMovieDetails(with movie: MovieFeed) {
-
-        let url = URL(string: "http://api.themoviedb.org/3/search/movie?api_key=7e588fae3312be4835d4fcf73918a95f&query=a%20&page=01")!
+    func showMovieDetails(with movie: MovieFeed, _ updated: @escaping (MovieFeed) -> Void) {
         let movieImageLoader = NetworkMovieImageDataLoader(client: urlSessionClient)
         let viewModel = MovieImageViewModel(model: movie, imageLoader: movieImageLoader)
+        viewModel.updatedItem = updated
         let controller = MovieUIComposer.makeMovieDetailsController(with: viewModel)
 
         navigationController.pushViewController(controller, animated: true)

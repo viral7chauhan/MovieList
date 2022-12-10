@@ -32,7 +32,11 @@ final class MovieListViewModel {
         return "Movies"
     }
 
+    var onMovieUpdate: ((Int, MovieFeed) -> Void)?
     var onMovieLoaded: Observer<[MovieFeed]>?
+
+    var updatedIndex: Int?
+
     private var movies = [MovieFeed]()
 
     func loadMovies() {
@@ -52,11 +56,20 @@ final class MovieListViewModel {
 
 extension MovieListViewModel: MovieListActions {
     func didSelectItem(at index: Int) {
-        flowCoordinator?.showMovieDetails(with: movies[index])
+        flowCoordinator?.showMovieDetails(with: movies[index]) { [weak self] updatedModel in
+            guard let self else { return }
+            self.movies[index] = updatedModel
+            self.updatedIndex = index
+            self.onMovieUpdate?(index, updatedModel)
+        }
     }
 
     func loadNextPage() {
         page += 1
         loadMovies()
+    }
+
+    func addToWatchList(at index: Int) {
+        movies[index].isFavorite.toggle()
     }
 }

@@ -11,8 +11,15 @@ class MovieListViewController: UITableViewController {
 
     var tableModel = [MovieImageCellController]() {
         didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            print("TableModel count \(tableModel.count)")
+
+            DispatchQueue.main.async { [weak viewModel] in
+                if let index = viewModel?.updatedIndex {
+                    let indexPath = IndexPath(row: index, section: 0)
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                } else {
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -20,7 +27,6 @@ class MovieListViewController: UITableViewController {
     var viewModel: MovieListViewModel? {
         didSet {
             title = viewModel?.title
-            viewModel?.loadMovies()
         }
     }
 
@@ -29,6 +35,7 @@ class MovieListViewController: UITableViewController {
         tableView.prefetchDataSource = self
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 230
+        viewModel?.loadMovies()
     }
 
     private func cellController(

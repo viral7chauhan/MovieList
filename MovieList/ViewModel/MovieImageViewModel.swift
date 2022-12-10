@@ -23,9 +23,11 @@ final class MovieImageViewModel {
             return baseURL
         }
     }
-    
+
+    var updatedItem: ((MovieFeed) -> Void)?
+
     private var task: MovieImageDataLoaderTask?
-    private var model: MovieFeed
+    var model: MovieFeed
     private let imageLoader: MovieImageDataLoader
 
     init(task: MovieImageDataLoaderTask? = nil, model: MovieFeed, imageLoader: MovieImageDataLoader) {
@@ -41,11 +43,18 @@ final class MovieImageViewModel {
         return dateFormatter
     }()
 
+    var isWatchListItem:  UIImage {
+        let imgName = isAddedInWatchList ? "star.fill" : "star"
+        return UIImage(systemName: imgName)!
+    }
+    
     var title: String { model.title }
     var overview: String { model.overview }
     var releaseDate: String { dateFormatter.string(from: model.releaseDate) }
+    var isAddedInWatchList: Bool { model.isFavorite }
 
     var onImageLoad: Observer<UIImage>?
+    var onWatchItemUpdate: Observer<Bool>?
 
     func loadImageData(with resolution: ImageResolution = .low) {
         guard let url = imageURL(for: resolution) else {
@@ -64,6 +73,12 @@ final class MovieImageViewModel {
         }
     }
 
+    func onWatchListChange() {
+        model.isFavorite = !model.isFavorite
+        onWatchItemUpdate?(model.isFavorite)
+        updatedItem?(model)
+    }
+
     func cancelImageDataLoad() {
         task?.cancel()
         task = nil
@@ -75,4 +90,6 @@ final class MovieImageViewModel {
         }
         return nil
     }
+
+
 }

@@ -30,7 +30,6 @@
 		E0DA1AE02940A812008367A3 /* MovieImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1ADF2940A812008367A3 /* MovieImageViewModel.swift */; };
 		E0DA1AE22940AB73008367A3 /* MovieImageCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1AE12940AB73008367A3 /* MovieImageCellController.swift */; };
 		E0DA1AE52940AE0C008367A3 /* MovieUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1AE42940AE0C008367A3 /* MovieUIComposer.swift */; };
-		E0DA1AE72940DA54008367A3 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1AE62940DA54008367A3 /* TableViewCell.swift */; };
 		E0DA1AE92940F957008367A3 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0DA1AE82940F957008367A3 /* MovieDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,7 +70,6 @@
 		E0DA1ADF2940A812008367A3 /* MovieImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageViewModel.swift; sourceTree = "<group>"; };
 		E0DA1AE12940AB73008367A3 /* MovieImageCellController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieImageCellController.swift; sourceTree = "<group>"; };
 		E0DA1AE42940AE0C008367A3 /* MovieUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUIComposer.swift; sourceTree = "<group>"; };
-		E0DA1AE62940DA54008367A3 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		E0DA1AE82940F957008367A3 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -201,7 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				E0DA1ADA2940A5CA008367A3 /* MovieListCell.swift */,
-				E0DA1AE62940DA54008367A3 /* TableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -339,7 +336,6 @@
 				E0DA1AE22940AB73008367A3 /* MovieImageCellController.swift in Sources */,
 				E0DA1AD82940A48F008367A3 /* MovieListViewController.swift in Sources */,
 				E0CE7FF12940801C00CD0808 /* SceneDelegate.swift in Sources */,
-				E0DA1AE72940DA54008367A3 /* TableViewCell.swift in Sources */,
 				E076C12F29433A6A005C557B /* MovieCoordinator.swift in Sources */,
 				E0CE80332940999F00CD0808 /* URLSessionHTTPClient.swift in Sources */,
 				E0DA1AD529409E84008367A3 /* NetworkMovieImageDataLoader.swift in Sources */,
