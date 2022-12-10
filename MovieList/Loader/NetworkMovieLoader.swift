@@ -8,7 +8,6 @@
 import Foundation
 
 public class NetworkMovieLoader: MovieLoader {
-    private let url: URL
     private let client: HTTPClient
 
     public enum Error: Swift.Error {
@@ -18,12 +17,11 @@ public class NetworkMovieLoader: MovieLoader {
 
     public typealias Result = MovieLoader.Result
 
-    public init(url: URL, client: HTTPClient) {
-        self.url = url
+    public init(client: HTTPClient) {
         self.client = client
     }
     
-    public func load(_ completion: @escaping (Result) -> Void) {
+    public func load(url: URL,_ completion: @escaping (Result) -> Void) {
         client.get(from: url) { [weak self] result in
             guard self != nil else { return }
             switch result {

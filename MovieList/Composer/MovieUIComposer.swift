@@ -28,7 +28,7 @@ final class MovieUIComposer {
     private static func adaptFeedToCellController(forwardingTo controller: MovieListViewController,
                                                   loader: MovieImageDataLoader) -> ([MovieFeed]) -> Void {
         return { [weak controller] feed in
-            controller?.tableModel = feed.map { model in
+            controller?.tableModel += feed.map { model in
                 MovieImageCellController(
                     viewModel: MovieImageViewModel(model: model,imageLoader: loader))
             }

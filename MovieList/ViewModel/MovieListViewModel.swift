@@ -18,6 +18,11 @@ final class MovieListViewModel {
 
     weak var flowCoordinator: MovieCoordinator?
     private let loader: MovieLoader
+    private var page: Int = 1 {
+        didSet {
+            print("Request for page \(page)")
+        }
+    }
 
     init(loader: MovieLoader) {
         self.loader = loader
@@ -31,12 +36,17 @@ final class MovieListViewModel {
     private var movies = [MovieFeed]()
 
     func loadMovies() {
-        loader.load { [weak self] result in
+        loader.load(url: movieURL) { [weak self, page] result in
             if let movies = try? result.get() {
                 self?.movies += movies
                 self?.onMovieLoaded?(movies)
+                print("Loaded \(movies.count) movies for Page no - \(page)")
             }
         }
+    }
+
+    private var movieURL: URL {
+        return URL(string: "http://api.themoviedb.org/3/search/movie?api_key=7e588fae3312be4835d4fcf73918a95f&query=a%20&page=\(page)")!
     }
 }
 
@@ -46,6 +56,7 @@ extension MovieListViewModel: MovieListActions {
     }
 
     func loadNextPage() {
-
+        page += 1
+        loadMovies()
     }
 }

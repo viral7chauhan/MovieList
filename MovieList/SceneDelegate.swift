@@ -27,7 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func configureWindw() {
         let url = URL(string: "http://api.themoviedb.org/3/search/movie?api_key=7e588fae3312be4835d4fcf73918a95f&query=a%20&page=01")!
 
-        let movieLoader = NetworkMovieLoader(url: url, client: urlSessionClient)
+        let movieLoader = NetworkMovieLoader(client: urlSessionClient)
         let movieImageLoader = NetworkMovieImageDataLoader(client: urlSessionClient)
 
         let navigation = UINavigationController()

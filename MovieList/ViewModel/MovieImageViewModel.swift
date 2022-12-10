@@ -48,7 +48,11 @@ final class MovieImageViewModel {
     var onImageLoad: Observer<UIImage>?
 
     func loadImageData(with resolution: ImageResolution = .low) {
-        task = imageLoader.loadImageData(from: imageURL(for: resolution)) { [weak self] result in
+        guard let url = imageURL(for: resolution) else {
+            print("Image url not found")
+            return
+        }
+        task = imageLoader.loadImageData(from: url) { [weak self] result in
             self?.handle(result)
         }
     }
@@ -65,10 +69,10 @@ final class MovieImageViewModel {
         task = nil
     }
 
-    private func imageURL(for resolution: ImageResolution) -> URL {
-        if let url = URL(string: resolution.url + model.thumbnailImage) {
-            return url
+    private func imageURL(for resolution: ImageResolution) -> URL? {
+        if let url = model.bannerImage {
+            return URL(string: resolution.url + url)
         }
-        fatalError("Invalid Image url")
+        return nil
     }
 }

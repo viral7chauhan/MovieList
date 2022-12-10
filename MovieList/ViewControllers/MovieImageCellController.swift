@@ -23,6 +23,7 @@ final class MovieImageCellController {
     }
 
     func preLoad() {
+        //TODO: Fix duplicate reloading
 //        viewModel.loadImageData()
     }
 

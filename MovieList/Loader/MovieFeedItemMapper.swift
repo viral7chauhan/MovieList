@@ -16,8 +16,8 @@ enum MovieFeedItemMapper {
             let id: Int
             let title: String
             let originalTitle: String
-            let thumbnailImage: String
-            let bannerImage: String
+            let thumbnailImage: String?
+            let bannerImage: String?
             let overview: String
             let popularity: Double
             let releaseDate: Date
@@ -54,11 +54,18 @@ enum MovieFeedItemMapper {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         decoder.dateDecodingStrategy = .formatted(dateFormatter)
 
-        guard response.statusCode == isOK,
-              let root = try? decoder.decode(Root.self, from: data) else {
+        guard response.statusCode == isOK else {
             return .failure(NetworkMovieLoader.Error.invalidData)
         }
 
-        return .success(root.movieFeeds)
+        do {
+            let root = try decoder.decode(Root.self, from: data)
+            return .success(root.movieFeeds)
+        } catch {
+            print(error.localizedDescription)
+            return .failure(NetworkMovieLoader.Error.invalidData)
+        }
+
+
     }
 }

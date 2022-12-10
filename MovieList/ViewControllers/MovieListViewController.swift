@@ -49,6 +49,9 @@ extension MovieListViewController {
     }
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == tableModel.count - 1 { // last cell
+            viewModel?.loadNextPage()
+        }
         return cellController(forRowAt: indexPath).view(in: tableView)
     }
 
