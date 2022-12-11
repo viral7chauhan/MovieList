@@ -12,11 +12,11 @@ class MovieListViewController: UITableViewController {
     var tableModel = [MovieImageCellController]() {
         didSet {
             print("TableModel count \(tableModel.count)")
-
             DispatchQueue.main.async { [weak viewModel] in
                 if let index = viewModel?.updatedIndex {
                     let indexPath = IndexPath(row: index, section: 0)
                     self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                    viewModel?.updatedIndex = nil
                 } else {
                     self.tableView.reloadData()
                 }
