@@ -49,7 +49,7 @@ final class MovieImageViewModel {
     }
     
     var title: String { model.title }
-    var overview: String { model.overview }
+    var overview: String { model.overview ?? "" }
     var releaseDate: String { dateFormatter.string(from: model.releaseDate) }
     var isAddedInWatchList: Bool { model.isFavorite }
 

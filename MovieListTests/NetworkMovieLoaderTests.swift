@@ -19,7 +19,7 @@ final class NetworkMovieLoaderTests: XCTestCase {
     func test_load_requestsDataFromURL() {
         let url = URL(string: "https://a-another-url.com")!
         let (sut, client) = makeSUT(url: url)
-        sut.load { _ in }
+        sut.load(url: url) { _ in }
         XCTAssertEqual(client.requestedURLs, [url])
     }
 
@@ -27,8 +27,8 @@ final class NetworkMovieLoaderTests: XCTestCase {
         let givenURL = URL(string: "https://another-url.com")!
         let (sut, client) = makeSUT(url: givenURL)
 
-        sut.load { _ in }
-        sut.load { _ in }
+        sut.load(url: givenURL) { _ in }
+        sut.load(url: givenURL) { _ in }
 
         XCTAssertEqual(client.requestedURLs, [givenURL, givenURL])
     }
@@ -84,10 +84,10 @@ final class NetworkMovieLoaderTests: XCTestCase {
     func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
         let url = URL(string: "http://any-url.com")!
         let client = HTTPClientSpy()
-        var sut: NetworkMovieLoader? = NetworkMovieLoader(url: url, client: client)
+        var sut: NetworkMovieLoader? = NetworkMovieLoader(client: client)
 
         var capturedResults = [NetworkMovieLoader.Result]()
-        sut?.load { capturedResults.append($0) }
+        sut?.load(url: url) { capturedResults.append($0) }
 
         sut = nil
         client.complete(withStatus: 200, data: makeItemsJSON([]))
@@ -100,7 +100,7 @@ final class NetworkMovieLoaderTests: XCTestCase {
                          file: StaticString = #filePath, line: UInt = #line)
     -> (sut: NetworkMovieLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
-        let sut = NetworkMovieLoader(url: url, client: client)
+        let sut = NetworkMovieLoader(client: client)
         trackForMemoryLeaks(client, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, client)
@@ -124,7 +124,8 @@ final class NetworkMovieLoaderTests: XCTestCase {
                         file: StaticString = #filePath, line: UInt = #line) {
 
         let exp = expectation(description: "Wait for completion")
-        sut.load { receivedResult in
+        let url = URL(string: "https://any-url.com")!
+        sut.load(url: url) { receivedResult in
             switch (receivedResult, expectedResult) {
                 case let (.success(receivedItems), .success(expectedItems)):
                     XCTAssertEqual(receivedItems, expectedItems, file: file, line: line)
@@ -156,13 +157,13 @@ private extension MovieFeed {
         return [
             "id": id,
             "original_title": originalTitle,
-            "overview": overview,
+            "overview": overview ?? "",
             "release_date": MovieFeed.formatter.string(from: releaseDate),
             "title": title,
             "vote_count": voteCount,
             "popularity": popularity,
-            "backdrop_path": thumbnailImage,
-            "poster_path": bannerImage,
+            "backdrop_path": thumbnailImage ?? "",
+            "poster_path": bannerImage ?? "",
         ]
     }
 }
