@@ -23,11 +23,11 @@ final class MovieImageCellController {
     }
 
     func preLoad() {
-        //TODO: Fix duplicate reloading
 //        viewModel.loadImageData()
     }
 
     func cancelLoad() {
+        releaseCellForReuse()
         viewModel.cancelImageDataLoad()
     }
 
@@ -46,6 +46,10 @@ final class MovieImageCellController {
         cell.addToWatchListButton.setImage(viewModel.isWatchListItem, for: .normal)
 
         return cell
+    }
+
+    private func releaseCellForReuse() {
+        cell = nil
     }
 }
 
