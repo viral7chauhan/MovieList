@@ -8,9 +8,9 @@
 import Foundation
 import UIKit
 
-final class MovieImageViewModel {
+public final class MovieImageViewModel {
 
-    enum ImageResolution {
+    public enum ImageResolution {
         case low
         case high
 
@@ -30,8 +30,7 @@ final class MovieImageViewModel {
     var model: MovieFeed
     private let imageLoader: MovieImageDataLoader
 
-    init(task: MovieImageDataLoaderTask? = nil, model: MovieFeed, imageLoader: MovieImageDataLoader) {
-        self.task = task
+    public init(model: MovieFeed, imageLoader: MovieImageDataLoader) {
         self.model = model
         self.imageLoader = imageLoader
     }
@@ -56,7 +55,7 @@ final class MovieImageViewModel {
     var onImageLoad: Observer<UIImage>?
     var onWatchItemUpdate: Observer<Bool>?
 
-    func loadImageData(with resolution: ImageResolution = .low) {
+    public func loadImageData(with resolution: ImageResolution = .low) {
         guard let url = imageURL(for: resolution) else {
             print("Image url not found")
             return
@@ -79,7 +78,7 @@ final class MovieImageViewModel {
         updatedItem?(model)
     }
 
-    func cancelImageDataLoad() {
+    public func cancelImageDataLoad() {
         task?.cancel()
         task = nil
     }
