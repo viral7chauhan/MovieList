@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E01F4AA4294637AF00FBE762 /* MovieListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01F4AA3294637AF00FBE762 /* MovieListViewModelTests.swift */; };
+		E01F4AA62946417900FBE762 /* MovieListItemViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01F4AA52946417900FBE762 /* MovieListItemViewModelTests.swift */; };
 		E076C12C29432E6B005C557B /* HTTPClientSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076C12B29432E6B005C557B /* HTTPClientSpy.swift */; };
 		E076C12F29433A6A005C557B /* MovieCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E076C12E29433A6A005C557B /* MovieCoordinator.swift */; };
 		E0CE7FEF2940801C00CD0808 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0CE7FEE2940801C00CD0808 /* AppDelegate.swift */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E01F4AA3294637AF00FBE762 /* MovieListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModelTests.swift; sourceTree = "<group>"; };
+		E01F4AA52946417900FBE762 /* MovieListItemViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListItemViewModelTests.swift; sourceTree = "<group>"; };
 		E076C12B29432E6B005C557B /* HTTPClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClientSpy.swift; sourceTree = "<group>"; };
 		E076C12E29433A6A005C557B /* MovieCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCoordinator.swift; sourceTree = "<group>"; };
 		E0CE7FEB2940801C00CD0808 /* MovieList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieList.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +146,8 @@
 			children = (
 				E0CE80252940880700CD0808 /* Helpers */,
 				E0CE8023294086C100CD0808 /* NetworkMovieLoaderTests.swift */,
+				E01F4AA3294637AF00FBE762 /* MovieListViewModelTests.swift */,
+				E01F4AA52946417900FBE762 /* MovieListItemViewModelTests.swift */,
 			);
 			path = MovieListTests;
 			sourceTree = "<group>";
@@ -348,7 +354,9 @@
 			files = (
 				E0CE80272940881D00CD0808 /* XCTestCase+MemoryTracking.swift in Sources */,
 				E076C12C29432E6B005C557B /* HTTPClientSpy.swift in Sources */,
+				E01F4AA62946417900FBE762 /* MovieListItemViewModelTests.swift in Sources */,
 				E0CE8024294086C100CD0808 /* NetworkMovieLoaderTests.swift in Sources */,
+				E01F4AA4294637AF00FBE762 /* MovieListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

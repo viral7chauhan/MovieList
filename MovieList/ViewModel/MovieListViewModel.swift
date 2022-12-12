@@ -14,17 +14,17 @@ protocol MovieListActions {
 
 typealias Observer<T> = (T) -> Void
 
-final class MovieListViewModel {
+public final class MovieListViewModel {
 
     weak var flowCoordinator: MovieCoordinator?
     private let loader: MovieLoader
-    private var page: Int = 1 {
+    public private(set) var page: Int = 1 {
         didSet {
             print("Request for page \(page)")
         }
     }
 
-    init(loader: MovieLoader) {
+    public init(loader: MovieLoader) {
         self.loader = loader
     }
 
@@ -39,7 +39,7 @@ final class MovieListViewModel {
 
     private var movies = [MovieFeed]()
 
-    func loadMovies() {
+    public func loadMovies() {
         loader.load(url: movieURL) { [weak self, page] result in
             if let movies = try? result.get() {
                 self?.movies += movies
@@ -64,12 +64,8 @@ extension MovieListViewModel: MovieListActions {
         }
     }
 
-    func loadNextPage() {
+    public func loadNextPage() {
         page += 1
         loadMovies()
-    }
-
-    func addToWatchList(at index: Int) {
-        movies[index].isFavorite.toggle()
     }
 }
